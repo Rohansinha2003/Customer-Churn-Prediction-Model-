@@ -121,7 +121,13 @@ def evaluate_models(models, X_test, y_test, feature_names):
         top_indices = indices[:top_n]
         
         plt.figure(figsize=(10, 6))
-        sns.barplot(x=importances[top_indices], y=np.array(feature_names)[top_indices], palette="viridis")
+        sns.barplot(
+            x=importances[top_indices], 
+            y=np.array(feature_names)[top_indices], 
+            hue=np.array(feature_names)[top_indices],
+            palette="viridis",
+            legend=False
+        )
         plt.title(f"Top {top_n} Feature Importances (Random Forest Model)")
         plt.xlabel("Relative Importance Score")
         plt.ylabel("Features")

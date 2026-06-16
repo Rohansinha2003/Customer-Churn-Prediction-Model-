@@ -40,7 +40,7 @@ def run_eda(df_clean):
     # Plot 1: Churn Distribution
     # ----------------------------------------------------
     plt.figure(figsize=(7, 5))
-    ax = sns.countplot(x="Churn", data=df_plot, palette=[CHURN_PALETTE[0], CHURN_PALETTE[1]])
+    ax = sns.countplot(x="Churn", hue="Churn", data=df_plot, palette=[CHURN_PALETTE[0], CHURN_PALETTE[1]], legend=False)
     
     # Add count and percentage labels
     total = len(df_plot)
@@ -232,6 +232,7 @@ def run_eda(df_clean):
     # 8.1 Senior Citizen
     sns.countplot(x="SeniorCitizen", hue="Churn", data=df_plot, ax=axes[0, 0], palette=[CHURN_PALETTE[0], CHURN_PALETTE[1]])
     axes[0, 0].set_title("Churn Rate: Senior Citizens vs Others")
+    axes[0, 0].set_xticks([0, 1])
     axes[0, 0].set_xticklabels(["Non-Senior", "Senior"])
     axes[0, 0].legend(title="Status", labels=["Retained", "Churned"])
     
